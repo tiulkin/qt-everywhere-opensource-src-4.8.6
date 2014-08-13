@@ -1,0 +1,41 @@
+CONFIG +=  release largefile stl precompile_header mmx 3dnow sse sse2 sse3 ssse3 sse4_1 sse4_2 avx dylib create_prl link_prl depend_includepath fix_output_dirs QTDIR_build
+QT_SOURCE_TREE = $$quote(/root/qt-everywhere-opensource-src-4.8.6)
+QT_BUILD_TREE = $$quote(/root/qt-everywhere-opensource-src-4.8.6)
+QT_BUILD_PARTS = libs tools examples demos docs translations
+QMAKE_ABSOLUTE_SOURCE_ROOT = $$QT_SOURCE_TREE
+QMAKE_MOC_SRC    = $$QT_BUILD_TREE/src/moc
+
+#local paths that cannot be queried from the QT_INSTALL_* properties while building QTDIR
+QMAKE_MOC        = $$QT_BUILD_TREE/bin/moc
+QMAKE_UIC        = $$QT_BUILD_TREE/bin/uic
+QMAKE_UIC3       = $$QT_BUILD_TREE/bin/uic3
+QMAKE_RCC        = $$QT_BUILD_TREE/bin/rcc
+QMAKE_QDBUSXML2CPP = $$QT_BUILD_TREE/bin/qdbusxml2cpp
+QMAKE_INCDIR_QT  = $$QT_BUILD_TREE/include
+QMAKE_LIBDIR_QT  = $$QT_BUILD_TREE/lib
+
+QMAKE_LFLAGS    = -Wl,-rpath-link,$$QT_BUILD_TREE/lib $$QMAKE_LFLAGS
+QT_CFLAGS_PSQL   = -I/usr/include
+QT_LFLAGS_PSQL   = -L/usr/lib64
+QT_CFLAGS_MYSQL   = -I/usr/include/mysql55
+QT_LFLAGS_MYSQL   = -L/usr/lib64/mysql -lmysqlclient -lpthread -lz -lm -lssl -lcrypto -ldl
+QT_LFLAGS_ODBC   = -lodbc
+QMAKESPEC = $$QT_BUILD_TREE/mkspecs/linux-g++-64
+styles += cde mac motif plastique cleanlooks windows
+decorations += default windows styled
+mouse-drivers += pc
+gfx-drivers += linuxfb
+mouse-drivers += linuxtp
+kbd-drivers += tty
+CONFIG += use_libmysqlclient_r
+QMAKE_CFLAGS_X11 = -I/usr/include/freetype2   $$QMAKE_CFLAGS_X11
+QMAKE_LIBS_X11 = -lfontconfig -lfreetype   $$QMAKE_LIBS_X11
+PRECOMPILED_DIR = .pch/release-shared
+OBJECTS_DIR = .obj/release-shared
+MOC_DIR = .moc/release-shared
+RCC_DIR = .rcc/release-shared
+UI_DIR = .uic/release-shared
+QMAKE_LIBS_X11 = -lXrender $$QMAKE_LIBS_X11
+QMAKE_RPATHDIR += "/usr/local/Trolltech/Qt-4.8.6/lib" 
+sql-drivers = 
+sql-plugins =  mysql psql sqlite
