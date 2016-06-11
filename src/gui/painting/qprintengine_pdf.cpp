@@ -654,7 +654,6 @@ int QPdfEnginePrivate::addImage(const QImage &img, bool *bitmap, qint64 serial_n
     {
         if (image.format() != QImage::Format_Mono)
             image = image.convertToFormat(QImage::Format_Mono);
-        format = QImage::Format_Mono;
     } else {
         *bitmap = false;
         if (image.format() != QImage::Format_RGB32 && image.format() != QImage::Format_ARGB32)
